@@ -179,7 +179,6 @@ export default {
     handleSignInGoogle() {
       signInWithPopup(auth, provider)
         .then((result) => {
-          console.log(result);
           this.$router.push("/about");
 
           // ...
@@ -193,7 +192,7 @@ export default {
       signInWithPopup(auth, providerTwitter)
         .then((result) => {
           const user = result.user;
-          console.log(user);
+
           this.$router.push("/about");
 
           // ...
@@ -207,7 +206,7 @@ export default {
       signInWithPopup(auth, providerGithub)
         .then((result) => {
           const user = result.user;
-          console.log(user);
+
           this.$router.push("/about");
 
           // ...
