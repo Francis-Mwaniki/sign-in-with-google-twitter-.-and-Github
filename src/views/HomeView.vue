@@ -1,6 +1,6 @@
 <template>
   <!-- component -->
-  <section class="flex flex-col md:flex-row h-screen items-center">
+  <section class="flex flex-col md:flex-row h-screen items-center overflow-hidden">
     <div class="bg-indigo-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
       <img
         src="https://cdn.pixabay.com/photo/2017/03/23/12/56/security-2168233_960_720.jpg"
@@ -16,8 +16,28 @@
         <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">
           Log in to your account
         </h1>
+        <div class="flex justify-center items-center mx-auto flex-col gap-y-1">
+          <div
+            v-show="goo"
+            class="flex justify-center items-center mx-auto text-xs font-extrabold text-black bg-green-300 p-4 rounded-md"
+          >
+            {{ message }}
+          </div>
+          <div
+            v-show="twit"
+            class="flex justify-center items-center mx-auto text-xs font-extrabold text-black bg-green-300 p-4 rounded-md"
+          >
+            {{ message }}
+          </div>
+          <div
+            v-show="git"
+            class="flex justify-center items-center mx-auto text-xs font-extrabold text-black bg-green-300 p-4 rounded-md"
+          >
+            {{ message }}
+          </div>
+        </div>
 
-        <form class="mt-6" action="#" method="POST">
+        <!--  <form class="mt-6" action="#" method="POST">
           <div>
             <label class="block text-gray-700">Email Address</label>
             <input
@@ -59,7 +79,7 @@
           >
             Log In
           </button>
-        </form>
+        </form> -->
 
         <hr class="my-6 border-gray-300 w-full" />
         <button
@@ -173,13 +193,20 @@ export default {
     return {
       user: "Black user",
       isSignedIn: false,
+      goo: false,
+      twit: false,
+      git: false,
+      message: "",
     };
   },
   methods: {
     handleSignInGoogle() {
       signInWithPopup(auth, provider)
         .then((result) => {
-          this.$router.push("/about");
+          let user = result.user;
+          console.log(user);
+          this.goo = true;
+          this.message = user.displayName + " " + user.email + " " + " is verified ";
 
           // ...
           this.isSignedIn = true;
@@ -192,8 +219,8 @@ export default {
       signInWithPopup(auth, providerTwitter)
         .then((result) => {
           const user = result.user;
-
-          this.$router.push("/about");
+          this.twit = true;
+          this.message = user.displayName + " " + " is verified ";
 
           // ...
         })
@@ -206,8 +233,8 @@ export default {
       signInWithPopup(auth, providerGithub)
         .then((result) => {
           const user = result.user;
-
-          this.$router.push("/about");
+          this.git = true;
+          this.message = user.displayName + " " + user.email + " " + " is verified ";
 
           // ...
         })
@@ -220,7 +247,7 @@ export default {
       signOut(auth)
         .then(() => {
           console.log("logged out");
-          location.reload();
+          this.message = " logged out ";
         })
         .catch((error) => {
           console.log(error);
