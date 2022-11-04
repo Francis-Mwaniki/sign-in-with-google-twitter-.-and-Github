@@ -1,129 +1,234 @@
 <template>
-  <div class="">
-    <!-- component -->
-    <div class="overflow-x-auto">
-      <div
-        class="min-w-screen min-h-screen flex items-center justify-center bg-gray-100 font-sans overflow-hidden"
-      >
-        <div class="w-full lg:w-5/6">
-          <div class="bg-white shadow-md rounded my-6">
-            <table class="min-w-max w-full table-auto">
-              <thead>
-                <tr
-                  class="bg-slate-900 text-gray-200 uppercase text-sm leading-normal"
-                >
-                  <th class="py-3 px-6 text-left">First Name</th>
-                  <th class="py-3 px-6 text-left">User</th>
-                  <th class="py-3 px-6 text-center">University</th>
-                  <th class="py-3 px-6 text-center">Age</th>
-                  <th class="py-3 px-6 text-center">weight</th>
-                </tr>
-              </thead>
-              <tbody
-                class="text-gray-600 text-sm font-light"
-                v-for="user in users[0]"
-              >
-                <tr class="border-b border-gray-200 hover:bg-gray-100">
-                  <td class="py-3 px-6 text-left whitespace-nowrap">
-                    <div class="flex items-center">
-                      <div class="mr-2">
-                        <span
-                          class="font-medium rounded-full border border-emerald-500 bg-black text-white"
-                          >{{ user.id }}</span
-                        >
-                      </div>
-                    </div>
-                    <div class="flex items-center">
-                      <div class="mr-2">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          x="0px"
-                          y="0px"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 48 48"
-                          style="fill: #000000"
-                        >
-                          <path
-                            fill="#80deea"
-                            d="M24,34C11.1,34,1,29.6,1,24c0-5.6,10.1-10,23-10c12.9,0,23,4.4,23,10C47,29.6,36.9,34,24,34z M24,16	c-12.6,0-21,4.1-21,8c0,3.9,8.4,8,21,8s21-4.1,21-8C45,20.1,36.6,16,24,16z"
-                          ></path>
-                          <path
-                            fill="#80deea"
-                            d="M15.1,44.6c-1,0-1.8-0.2-2.6-0.7C7.6,41.1,8.9,30.2,15.3,19l0,0c3-5.2,6.7-9.6,10.3-12.4c3.9-3,7.4-3.9,9.8-2.5	c2.5,1.4,3.4,4.9,2.8,9.8c-0.6,4.6-2.6,10-5.6,15.2c-3,5.2-6.7,9.6-10.3,12.4C19.7,43.5,17.2,44.6,15.1,44.6z M32.9,5.4	c-1.6,0-3.7,0.9-6,2.7c-3.4,2.7-6.9,6.9-9.8,11.9l0,0c-6.3,10.9-6.9,20.3-3.6,22.2c1.7,1,4.5,0.1,7.6-2.3c3.4-2.7,6.9-6.9,9.8-11.9	c2.9-5,4.8-10.1,5.4-14.4c0.5-4-0.1-6.8-1.8-7.8C34,5.6,33.5,5.4,32.9,5.4z"
-                          ></path>
-                          <path
-                            fill="#80deea"
-                            d="M33,44.6c-5,0-12.2-6.1-17.6-15.6C8.9,17.8,7.6,6.9,12.5,4.1l0,0C17.4,1.3,26.2,7.8,32.7,19	c3,5.2,5,10.6,5.6,15.2c0.7,4.9-0.3,8.3-2.8,9.8C34.7,44.4,33.9,44.6,33,44.6z M13.5,5.8c-3.3,1.9-2.7,11.3,3.6,22.2	c6.3,10.9,14.1,16.1,17.4,14.2c1.7-1,2.3-3.8,1.8-7.8c-0.6-4.3-2.5-9.4-5.4-14.4C24.6,9.1,16.8,3.9,13.5,5.8L13.5,5.8z"
-                          ></path>
-                          <circle cx="24" cy="24" r="4" fill="#80deea"></circle>
-                        </svg>
-                      </div>
-                      <span class="font-medium">{{ user.firstName }}</span>
-                    </div>
-                  </td>
-                  <td class="py-3 px-6 text-left">
-                    <div class="flex items-center">
-                      <div class="mr-2">
-                        <img class="w-6 h-6 rounded-full" :src="user.image" />
-                      </div>
-                      <span>{{ user.lastName }}</span>
-                    </div>
-                  </td>
-                  <td class="py-3 px-6 text-center">
-                    <div class="flex items-center justify-center">
-                      <strong>{{ user.university }}</strong>
-                    </div>
-                  </td>
-                  <td class="py-3 px-6 text-center">
-                    <span
-                      class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs"
-                      >{{ user.age }}</span
-                    >
-                  </td>
-                  <td class="py-3 px-6 text-center">
-                    <div class="flex item-center justify-center">
-                      <div
-                        class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110"
-                      >
-                        {{ user.weight }}
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+  <!-- component -->
+  <section class="flex flex-col md:flex-row h-screen items-center">
+    <div class="bg-indigo-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
+      <img
+        src="https://cdn.pixabay.com/photo/2017/03/23/12/56/security-2168233_960_720.jpg"
+        alt=""
+        class="w-full h-full object-cover"
+      />
+    </div>
+
+    <div
+      class="bg-white w-full md:max-w-md lg:max-w-full md:mx-auto md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12 flex items-center justify-center"
+    >
+      <div class="w-full h-100">
+        <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">
+          Log in to your account
+        </h1>
+
+        <form class="mt-6" action="#" method="POST">
+          <div>
+            <label class="block text-gray-700">Email Address</label>
+            <input
+              type="email"
+              name=""
+              id=""
+              placeholder="Enter Email Address"
+              class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+              autofocus
+              autocomplete
+              required
+            />
           </div>
-        </div>
+
+          <div class="mt-4">
+            <label class="block text-gray-700">Password</label>
+            <input
+              type="password"
+              name=""
+              id=""
+              placeholder="Enter Password"
+              minlength="6"
+              class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+              required
+            />
+          </div>
+
+          <div class="text-right mt-2">
+            <a
+              href="#"
+              class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700"
+              >Forgot Password?</a
+            >
+          </div>
+
+          <button
+            type="submit"
+            class="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg px-4 py-3 mt-6"
+          >
+            Log In
+          </button>
+        </form>
+
+        <hr class="my-6 border-gray-300 w-full" />
+        <button
+          type="button"
+          class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300"
+          @click="handleSignOut"
+          v-if="isSignedIn"
+        >
+          <div class="flex items-center justify-center">
+            <span class="ml-4"> LogOut </span>
+          </div>
+        </button>
+
+        <button
+          type="button"
+          class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300"
+          @click="handleSignInGoogle"
+          v-if="!isSignedIn"
+        >
+          <div class="flex items-center justify-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              class="w-6 h-6"
+              viewBox="0 0 48 48"
+            >
+              <defs>
+                <path
+                  id="a"
+                  d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z"
+                />
+              </defs>
+              <clipPath id="b">
+                <use xlink:href="#a" overflow="visible" />
+              </clipPath>
+              <path clip-path="url(#b)" fill="#FBBC05" d="M0 37V11l17 13z" />
+              <path clip-path="url(#b)" fill="#EA4335" d="M0 11l17 13 7-6.1L48 14V0H0z" />
+              <path clip-path="url(#b)" fill="#34A853" d="M0 37l30-23 7.9 1L48 0v48H0z" />
+              <path clip-path="url(#b)" fill="#4285F4" d="M48 48L17 24l-4-3 35-10z" />
+            </svg>
+            <span class="ml-4"> Log in with Google</span>
+          </div>
+        </button>
+        <button
+          type="button"
+          class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300"
+          @click="handleSignTwitter"
+          v-if="!isSignedIn"
+        >
+          <div class="flex items-center justify-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              x="0px"
+              y="0px"
+              width="30"
+              height="30"
+              viewBox="0 0 50 50"
+            >
+              <path
+                d="M 50.0625 10.4375 C 48.214844 11.257813 46.234375 11.808594 44.152344 12.058594 C 46.277344 10.785156 47.910156 8.769531 48.675781 6.371094 C 46.691406 7.546875 44.484375 8.402344 42.144531 8.863281 C 40.269531 6.863281 37.597656 5.617188 34.640625 5.617188 C 28.960938 5.617188 24.355469 10.21875 24.355469 15.898438 C 24.355469 16.703125 24.449219 17.488281 24.625 18.242188 C 16.078125 17.8125 8.503906 13.71875 3.429688 7.496094 C 2.542969 9.019531 2.039063 10.785156 2.039063 12.667969 C 2.039063 16.234375 3.851563 19.382813 6.613281 21.230469 C 4.925781 21.175781 3.339844 20.710938 1.953125 19.941406 C 1.953125 19.984375 1.953125 20.027344 1.953125 20.070313 C 1.953125 25.054688 5.5 29.207031 10.199219 30.15625 C 9.339844 30.390625 8.429688 30.515625 7.492188 30.515625 C 6.828125 30.515625 6.183594 30.453125 5.554688 30.328125 C 6.867188 34.410156 10.664063 37.390625 15.160156 37.472656 C 11.644531 40.230469 7.210938 41.871094 2.390625 41.871094 C 1.558594 41.871094 0.742188 41.824219 -0.0585938 41.726563 C 4.488281 44.648438 9.894531 46.347656 15.703125 46.347656 C 34.617188 46.347656 44.960938 30.679688 44.960938 17.09375 C 44.960938 16.648438 44.949219 16.199219 44.933594 15.761719 C 46.941406 14.3125 48.683594 12.5 50.0625 10.4375 Z"
+              ></path>
+            </svg>
+            <span class="ml-4"> Log in with Twitter</span>
+          </div>
+        </button>
+
+        <button
+          type="button"
+          class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300"
+          @click="handleSignGithub"
+          v-if="!isSignedIn"
+        >
+          <div class="flex items-center justify-center">
+            <svg
+              fill="currentColor"
+              class="w-6 h-6 m-2"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+              />
+            </svg>
+            <span class="ml-4"> Log in with Github</span>
+          </div>
+        </button>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
-// @ is an alias to /src
-
+import firebaseConfig from "../../firebaseConfig";
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  signOut,
+  TwitterAuthProvider,
+  GithubAuthProvider,
+} from "firebase/auth";
+firebaseConfig;
+const provider = new GoogleAuthProvider();
+const providerTwitter = new TwitterAuthProvider();
+const providerGithub = new GithubAuthProvider();
+const auth = getAuth();
 export default {
-  name: "HomeView",
-  components: {},
   data() {
     return {
-      users: [],
+      user: "Black user",
+      isSignedIn: false,
     };
   },
   methods: {
-    async getAllUser() {
-      let url = "https://dummyjson.com/users?limit=50";
-      let res = await fetch(url);
-      let data = await res.json(res);
-      let finalData = data.users;
-      console.log(this.users);
-      this.users.push(finalData);
-      console.log(this.users);
+    handleSignInGoogle() {
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          console.log(result);
+          this.$router.push("/about");
+
+          // ...
+          this.isSignedIn = true;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
-  },
-  mounted() {
-    this.getAllUser();
+    handleSignTwitter() {
+      signInWithPopup(auth, providerTwitter)
+        .then((result) => {
+          const user = result.user;
+          console.log(user);
+          this.$router.push("/about");
+
+          // ...
+        })
+        .catch((error) => {
+          console.log(error);
+          // ...
+        });
+    },
+    handleSignGithub() {
+      signInWithPopup(auth, providerGithub)
+        .then((result) => {
+          const user = result.user;
+          console.log(user);
+          this.$router.push("/about");
+
+          // ...
+        })
+        .catch((error) => {
+          console.log(error);
+          // ...
+        });
+    },
+    handleSignOut() {
+      signOut(auth)
+        .then(() => {
+          console.log("logged out");
+          location.reload();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>
+
+<style></style>
