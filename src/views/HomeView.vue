@@ -1,9 +1,17 @@
 <template>
   <!-- component -->
   <section class="flex flex-col md:flex-row h-screen items-center overflow-hidden">
-    <div class="bg-indigo-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
+    <div class="bg-slate-900 lg:block w-full md:w-1/2 xl:w-2/3 h-screen" v-if="!authUser">
       <img
         src="https://cdn.pixabay.com/photo/2017/03/23/12/56/security-2168233_960_720.jpg"
+        alt=""
+        class="w-full h-3/4 md:h-full object-cover"
+      />
+    </div>
+
+    <div class="bg-indigo-600 lg:block w-full md:w-1/2 xl:w-2/3 h-screen" v-else>
+      <img
+        src="https://cdn.pixabay.com/photo/2017/03/23/12/56/security-2168234__340.jpg"
         alt=""
         class="w-full h-full object-cover"
       />
@@ -191,7 +199,7 @@ const auth = getAuth();
 export default {
   data() {
     return {
-      user: "Black user",
+      authUser: null,
       isSignedIn: false,
       goo: false,
       twit: false,
@@ -206,6 +214,7 @@ export default {
           let user = result.user;
           console.log(user);
           this.goo = true;
+          this.authUser = true;
           this.message = user.displayName + " " + user.email + " " + " is verified ";
 
           // ...
@@ -219,6 +228,7 @@ export default {
       signInWithPopup(auth, providerTwitter)
         .then((result) => {
           const user = result.user;
+          this.authUser = true;
           this.twit = true;
           this.message = user.displayName + " " + " is verified ";
 
@@ -233,6 +243,7 @@ export default {
       signInWithPopup(auth, providerGithub)
         .then((result) => {
           const user = result.user;
+          this.authUser = true;
           this.git = true;
           this.message = user.displayName + " " + user.email + " " + " is verified ";
 
@@ -248,6 +259,7 @@ export default {
         .then(() => {
           console.log("logged out");
           this.message = " logged out ";
+          this.authUser = false;
         })
         .catch((error) => {
           console.log(error);
